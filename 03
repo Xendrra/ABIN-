@@ -1,0 +1,14 @@
+sek=genbankread('klokan.gbk');
+ND1=sek.Sequence(2727:3683);
+prot=nt2aa(ND1, 'GeneticCode',2)
+cetnost=codoncount(ND1)
+gkod=revgeneticcode(2)
+aa=int2aa(1:20)
+mat=zeros(20,6)
+for i=1:20
+    L=length(gkod.(aa(i)))
+    for j=1:L
+        temp=gkod.(aa(i)){j}
+        mat(i,j)=cetnost.(temp)       
+    end
+end
